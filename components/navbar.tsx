@@ -8,6 +8,7 @@ import { Button } from "./ui/button";
 import { useStoreUser } from "@/hooks/useStoreUser";
 import { BarLoader } from "react-spinners";
 import { Authenticated, Unauthenticated } from "convex/react";
+import { LayoutDashboard } from "lucide-react";
 
 const mysoul = My_Soul({
   weight: "400",
@@ -56,15 +57,19 @@ export default function Navbar() {
         <div className="ml-10 flex items-center gap-3 md:ml-20">
           <Unauthenticated>
             <SignInButton>
-              <Button variant="glass" className="hidden lg:flex">
-                Sign In
-              </Button>
+              <Button variant="glass">Sign In</Button>
             </SignInButton>
             <SignUpButton>
               <Button variant="primary">Get Started</Button>
             </SignUpButton>
           </Unauthenticated>
           <Authenticated>
+            <Link href="/dashboard">
+              <Button variant="glass">
+                <LayoutDashboard />
+                <span className="hidden md:flex">Dashboard</span>
+              </Button>
+            </Link>
             <UserButton />
           </Authenticated>
         </div>
