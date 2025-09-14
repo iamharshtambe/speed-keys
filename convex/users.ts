@@ -8,7 +8,7 @@ async function requireAuth(ctx: any) {
   return identity;
 }
 
-export const storeUser = mutation({
+export const store = mutation({
   args: {},
   handler: async (ctx) => {
     const identity = await requireAuth(ctx);

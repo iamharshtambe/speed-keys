@@ -3,14 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { My_Soul } from "next/font/google";
-import {
-  SignedIn,
-  SignedOut,
-  SignInButton,
-  SignUpButton,
-  UserButton,
-} from "@clerk/nextjs";
+import { SignInButton, SignUpButton, UserButton } from "@clerk/nextjs";
 import { Button } from "./ui/button";
+import { useStoreUser } from "@/hooks/useStoreUser";
+import { BarLoader } from "react-spinners";
+import { Authenticated, Unauthenticated } from "convex/react";
 
 const mysoul = My_Soul({
   weight: "400",
@@ -19,6 +16,9 @@ const mysoul = My_Soul({
 
 export default function Navbar() {
   const path = usePathname();
+  const { isLoading } = useStoreUser();
+
+  if (path === "/editor") return null;
 
   return (
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 transform text-nowrap">
@@ -54,7 +54,7 @@ export default function Navbar() {
         )}
 
         <div className="ml-10 flex items-center gap-3 md:ml-20">
-          <SignedOut>
+          <Unauthenticated>
             <SignInButton>
               <Button variant="glass" className="hidden lg:flex">
                 Sign In
@@ -63,11 +63,17 @@ export default function Navbar() {
             <SignUpButton>
               <Button variant="primary">Get Started</Button>
             </SignUpButton>
-          </SignedOut>
-          <SignedIn>
+          </Unauthenticated>
+          <Authenticated>
             <UserButton />
-          </SignedIn>
+          </Authenticated>
         </div>
+
+        {isLoading && (
+          <div className="fixed bottom-0 left-0 z-40 flex w-full justify-center">
+            <BarLoader width="95%" color="#06b6d4" />
+          </div>
+        )}
       </div>
     </nav>
   );
