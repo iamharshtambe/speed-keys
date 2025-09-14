@@ -5,6 +5,9 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import FloatingShapes from "@/components/floating-shapes";
 import Navbar from "@/components/navbar";
+import { ClerkProvider } from "@clerk/nextjs";
+import ConvexClientProvider from "@/convex-client-provider";
+import { shadesOfPurple } from "@clerk/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,12 +30,16 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="min-h-screen overflow-x-hidden bg-slate-900 text-white">
-            <Navbar />
-            <FloatingShapes />
-            <Toaster richColors />
-            {children}
-          </main>
+          <ClerkProvider appearance={{ baseTheme: shadesOfPurple }}>
+            <ConvexClientProvider>
+              <main className="min-h-screen overflow-x-hidden bg-slate-900 text-white">
+                <Navbar />
+                <FloatingShapes />
+                <Toaster richColors />
+                {children}
+              </main>
+            </ConvexClientProvider>
+          </ClerkProvider>
         </ThemeProvider>
       </body>
     </html>
