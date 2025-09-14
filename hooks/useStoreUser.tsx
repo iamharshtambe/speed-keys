@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "../convex/_generated/api";
 import { Id } from "../convex/_generated/dataModel";
+import { toast } from "sonner";
 
 export function useStoreUser() {
   const { isLoading, isAuthenticated } = useConvexAuth();
@@ -19,8 +20,13 @@ export function useStoreUser() {
     }
 
     async function createUser() {
-      const id = await storeUser();
-      setUserId(id);
+      try {
+        const id = await storeUser();
+        setUserId(id);
+        toast.success("Welcome to Editopia 🚀");
+      } catch (err) {
+        toast.error("Failed to store user");
+      }
     }
     createUser();
 

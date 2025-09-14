@@ -35,7 +35,7 @@ export default function RootLayout({
               <main className="min-h-screen overflow-x-hidden bg-slate-900 text-white">
                 <Navbar />
                 <FloatingShapes />
-                <Toaster richColors />
+                <Toaster richColors position="top-right" />
                 {children}
               </main>
             </ConvexClientProvider>
