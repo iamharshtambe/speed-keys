@@ -1,12 +1,12 @@
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeProvider } from "@/providers/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import FloatingShapes from "@/components/floating-shapes";
 import Navbar from "@/components/navbar";
 import { ClerkProvider } from "@clerk/nextjs";
-import ConvexClientProvider from "@/convex-client-provider";
+import ConvexClientProvider from "@/providers/convex-client-provider";
 import { shadesOfPurple } from "@clerk/themes";
 
 const inter = Inter({ subsets: ["latin"] });

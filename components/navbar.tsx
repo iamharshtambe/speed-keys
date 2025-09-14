@@ -3,6 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { My_Soul } from "next/font/google";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
+import { Button } from "./ui/button";
 
 const mysoul = My_Soul({
   weight: "400",
@@ -45,7 +53,21 @@ export default function Navbar() {
           </div>
         )}
 
-        <div className="ml-10 md:ml-20">Auth</div>
+        <div className="ml-10 flex items-center gap-3 md:ml-20">
+          <SignedOut>
+            <SignInButton>
+              <Button variant="glass" className="hidden lg:flex">
+                Sign In
+              </Button>
+            </SignInButton>
+            <SignUpButton>
+              <Button variant="primary">Get Started</Button>
+            </SignUpButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+        </div>
       </div>
     </nav>
   );
