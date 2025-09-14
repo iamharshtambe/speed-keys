@@ -44,7 +44,7 @@ export default function FloatingShapes() {
       {shapes.map((shape) => (
         <div
           key={shape.id}
-          className={`absolute animate-pulse rounded-full bg-gradient-to-r blur-3xl ${shape.size} ${shape.position} ${shape.gradient}`}
+          className={`absolute animate-pulse rounded-full bg-gradient-to-r opacity-25 blur-3xl ${shape.size} ${shape.position} ${shape.gradient}`}
           style={{
             transform: `translateY(${scrollY * 0.5}px) rotate(${scrollY * 0.1}deg)`,
           }}
