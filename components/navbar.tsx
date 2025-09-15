@@ -34,12 +34,6 @@ export default function Navbar() {
         {path === "/" && (
           <div className="hidden space-x-6 md:flex">
             <Link
-              href="#features"
-              className="cursor-pointer font-medium transition-all duration-300 hover:text-cyan-500"
-            >
-              Features
-            </Link>
-            <Link
               href="#pricing"
               className="cursor-pointer font-medium transition-all duration-300 hover:text-cyan-500"
             >
