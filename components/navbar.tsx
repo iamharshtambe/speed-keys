@@ -22,7 +22,7 @@ export default function Navbar() {
   if (path === "/editor") return null;
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 transform text-nowrap">
+    <nav className="fixed top-6 left-1/2 z-50 -translate-x-1/2 transform text-nowrap">
       <div className="flex items-center justify-between gap-8 rounded-full border border-white/20 bg-white/10 px-6 py-3 backdrop-blur-md">
         <Link
           href="/"

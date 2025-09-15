@@ -30,10 +30,10 @@ const features = [
       "Edit multiple photos at once to save time and maintain consistency.",
   },
   {
-    emoji: "☁️",
-    title: "Cloud Sync",
+    emoji: "🌈",
+    title: "Creative Filters",
     description:
-      "Access your projects anywhere with secure cloud storage and instant sync.",
+      "Apply professional-grade filters and presets to give your photos unique styles instantly.",
   },
 ];
 
