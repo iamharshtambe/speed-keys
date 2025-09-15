@@ -34,9 +34,6 @@ export const store = mutation({
       name: identity.name ?? "Anonyamous",
       email: identity.email ?? "",
       tokenIdentifier: identity.tokenIdentifier,
-      plan: "free",
-      projectsUsed: 0,
-      exportsThisMonth: 0,
       createdAt: Date.now(),
       lastActiveAt: Date.now(),
     });

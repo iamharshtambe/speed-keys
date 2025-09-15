@@ -9,12 +9,6 @@ export default defineSchema({
 
     tokenIdentifier: v.string(),
 
-    plan: v.union(v.literal("free"), v.literal("pro")),
-
-    projectsUsed: v.number(),
-
-    exportsThisMonth: v.number(),
-
     createdAt: v.number(),
 
     lastActiveAt: v.number(),
