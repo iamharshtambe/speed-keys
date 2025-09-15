@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 export default function HeroSection() {
   return (
     <div>
-      <h1 className="text-7xl font-extrabold tracking-tight md:text-9xl">
+      <h1 className="text-7xl font-extrabold md:text-9xl">
         <p>
           Your{" "}
           <span className="animate-pulse bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
