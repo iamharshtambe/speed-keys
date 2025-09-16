@@ -33,7 +33,7 @@ export default function RootLayout({
         >
           <ClerkProvider appearance={{ baseTheme: shadesOfPurple }}>
             <ConvexClientProvider>
-              <main className="min-h-[5000px] overflow-x-hidden bg-slate-900 text-white">
+              <main className="min-h-screen overflow-x-hidden bg-slate-900 text-white">
                 <Navbar />
                 <CursorFollower />
                 <FloatingShapes />

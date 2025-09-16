@@ -52,21 +52,10 @@ export default function Features() {
         need to create, enhance, and perfect your images with the power of AI.
       </p>
 
-      <motion.div
-        className="grid max-w-6xl gap-6 pt-10 sm:grid-cols-2 lg:grid-cols-3"
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ staggerChildren: 0.15 }}
-      >
+      <div className="grid max-w-6xl gap-6 pt-10 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((feature) => (
-          <motion.div
+          <div
             key={feature.title}
-            variants={{
-              hidden: { opacity: 0, y: 40 },
-              show: { opacity: 1, y: 0 },
-            }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
             className="group h-[220px] rounded-2xl border border-white/20 bg-white/10 p-6 text-left backdrop-blur-md hover:border-purple-400 hover:shadow-lg hover:shadow-purple-500/20"
           >
             <span className="text-3xl">{feature.emoji}</span>
@@ -76,9 +65,9 @@ export default function Features() {
             <p className="pt-3 text-base text-neutral-400 group-hover:text-neutral-300">
               {feature.description}
             </p>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

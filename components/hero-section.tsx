@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button } from "./ui/button";
 
 export default function HeroSection() {
@@ -21,9 +22,11 @@ export default function HeroSection() {
       </p>
 
       <div className="pt-10">
-        <Button variant="primary" size="xl" className="font-semibold">
-          Try Editopia Now
-        </Button>
+        <Link href="/dashboard">
+          <Button variant="primary" size="xl" className="font-semibold">
+            Try Editopia Now
+          </Button>
+        </Link>
       </div>
     </div>
   );
