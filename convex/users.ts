@@ -1,3 +1,4 @@
+import { Doc } from "./_generated/dataModel";
 import { mutation, query } from "./_generated/server";
 
 async function requireAuth(ctx: any) {
@@ -41,7 +42,7 @@ export const store = mutation({
 });
 
 export const getCurrentUser = query({
-  handler: async (ctx) => {
+  handler: async (ctx): Promise<Doc<"users">> => {
     const identity = await requireAuth(ctx);
 
     const user = await ctx.db

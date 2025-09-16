@@ -19,7 +19,7 @@ export default function Navbar() {
   const path = usePathname();
   const { isLoading } = useStoreUser();
 
-  if (path === "/editor") return null;
+  if (path.includes("/editor")) return null;
 
   return (
     <nav className="fixed top-6 left-1/2 z-50 -translate-x-1/2 transform text-nowrap">
