@@ -46,3 +46,24 @@ export const getCurrentProject = query({
     return projects;
   },
 });
+
+export const deleteProject = mutation({
+  args: { projectId: v.id("projects") },
+
+  handler: async (ctx, args): Promise<{ success: boolean }> => {
+    const user = await ctx.runQuery(api.users.getCurrentUser);
+    const project = await ctx.db.get(args.projectId);
+
+    if (!project) {
+      throw new Error("Project not found");
+    }
+
+    if (!user || project.userId !== user._id) {
+      throw new Error("Access denied");
+    }
+
+    await ctx.db.delete(args.projectId);
+
+    return { success: true };
+  },
+});
