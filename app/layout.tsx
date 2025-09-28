@@ -33,8 +33,9 @@ export default function RootLayout({
             style={{ backgroundImage: "url('/bg.jpeg')" }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30" />
+
+          <main className="relative z-10">{children}</main>
         </div>
-        {children}
       </body>
     </html>
   );
