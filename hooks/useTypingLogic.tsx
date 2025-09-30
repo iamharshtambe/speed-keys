@@ -1,3 +1,4 @@
+import { useTypingStore } from '@/store/useTypingStore';
 import { useEffect, useMemo, useState } from 'react';
 
 type TypingError = { state: false } | { state: true; at: number };
@@ -37,6 +38,7 @@ export function useTypingLogic({ text }: { text: string }) {
     // check if the last word is completely typed
     if (index === totalWords - 1) {
       if (typed === currentWord) {
+        useTypingStore.getState().raceOver();
         return;
       }
     }

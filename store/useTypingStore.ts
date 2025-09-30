@@ -1,15 +1,21 @@
 'use client';
 
-import { typingTexts } from '@/data/data';
+import { getTypingText } from '@/lib/getTypingText';
 import { create } from 'zustand';
 
 type TypingStore = {
   text: string;
+  raceCompleted: boolean;
+  raceOver: () => void;
+  startNewRace: () => void;
 };
 
 export const useTypingStore = create<TypingStore>()((set) => ({
-  text: typingTexts[Math.floor(Math.random() * typingTexts.length)]
-    .split(' ')
-    .slice(0, 5)
-    .join(' '),
+  text: getTypingText(),
+
+  raceCompleted: false,
+
+  raceOver: () => set({ raceCompleted: true }),
+
+  startNewRace: () => set({ text: getTypingText(), raceCompleted: false }),
 }));
