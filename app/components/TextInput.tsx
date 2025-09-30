@@ -1,6 +1,6 @@
 'use client';
 
-import { useTypingLogic } from '../hooks/useTypingLogic';
+import { useTypingLogic } from '../../hooks/useTypingLogic';
 
 export default function TextInput({ text }: { text: string }) {
   const { typed, setTyped, raceOver } = useTypingLogic({ text });
