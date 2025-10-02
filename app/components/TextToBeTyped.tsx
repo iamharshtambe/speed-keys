@@ -1,11 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { Mark, useTypingStore } from '@/store/useTypingStore';
 
-function addMark(
-  i: number,
-  marked: { correctlyTyped: number; totalCharTyped: number },
-): string {
+function addMark(i: number, marked: Mark): string {
   const textColor = i < marked.correctlyTyped ? 'text-green-500' : '';
   const bgColor =
     i >= marked.correctlyTyped && i < marked.totalCharTyped ? 'bg-red-300' : '';
@@ -13,10 +10,7 @@ function addMark(
 }
 
 export default function TextToBeTyped({ text }: { text: string }) {
-  const [marked, setMarked] = useState({
-    correctlyTyped: 0,
-    totalCharTyped: 0,
-  });
+  const marked = useTypingStore((state) => state.mark);
 
   return (
     <p>

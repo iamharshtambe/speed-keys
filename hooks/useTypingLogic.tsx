@@ -7,6 +7,8 @@ export function useTypingLogic({ text }: { text: string }) {
   const [typed, setTyped] = useState('');
   const [index, setIndex] = useState(0);
   const [mismatch, setMismatch] = useState<TypingError>({ state: false });
+  const updateCorrectMark = useTypingStore.getState().updateCorrectMark;
+  const updateInorrectMark = useTypingStore.getState().updateIncorrectMark;
 
   const { words, totalWords } = useMemo(() => {
     const words = text.split(' ');
@@ -20,6 +22,8 @@ export function useTypingLogic({ text }: { text: string }) {
 
     const currentWord = words[index];
     const typedLength = typed.length;
+    const totalCharTyped =
+      words.slice(0, index).join('').length + index + typedLength; // total typed characters
 
     // prevent leading space
     if (typed === ' ') {
@@ -31,7 +35,12 @@ export function useTypingLogic({ text }: { text: string }) {
     if (mismatch.state) {
       if (mismatch.at >= typedLength) {
         setMismatch({ state: false });
+        updateCorrectMark(totalCharTyped);
+        return;
       }
+
+      updateInorrectMark(totalCharTyped);
+
       return;
     }
 
@@ -55,7 +64,11 @@ export function useTypingLogic({ text }: { text: string }) {
     // mismatch detection
     if (typed[typedLength - 1] !== currentWord[typedLength - 1]) {
       setMismatch({ state: true, at: typedLength - 1 });
+      updateInorrectMark(totalCharTyped);
+      return;
     }
+
+    updateCorrectMark(totalCharTyped);
   }, [typed, index, words, totalWords, mismatch]);
 
   return { typed, setTyped, raceOver };
