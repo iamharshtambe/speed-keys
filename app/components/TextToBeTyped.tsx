@@ -4,9 +4,14 @@ import { Mark, useTypingStore } from '@/store/useTypingStore';
 
 function addMark(i: number, marked: Mark): string {
   const textColor = i < marked.correctlyTyped ? 'text-green-500' : '';
+
   const bgColor =
     i >= marked.correctlyTyped && i < marked.totalCharTyped ? 'bg-red-300' : '';
-  return `${textColor} ${bgColor}`;
+
+  const cursor =
+    i === marked.correctlyTyped ? 'animate-cursor' : 'border-transparent';
+
+  return `border-l ${textColor} ${bgColor} ${cursor}`;
 }
 
 export default function TextToBeTyped({ text }: { text: string }) {

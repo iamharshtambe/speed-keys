@@ -12,6 +12,20 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@theme {
+  --animate-cursor: cursor 1s infinite linear;
+}
+
+@keyframes cursor {
+  0%,
+  100% {
+    border-color: rgba(0, 0, 0, 1);
+  }
+  50% {
+    border-color: rgba(0, 0, 0, 0);
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
